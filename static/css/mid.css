@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+.mid_left{width: 478px;height:3630px;float: left;padding-left: 24px;}
+
+.title{width: 478px;height: 167px;}
+.title h3{font-size: 24px;padding-top: 70px;}
+.title p{font-size: 14px;padding-top: 5px;}
+
+.driving{width: 478px;height: 478px;background: lightgoldenrodyellow;margin-top: 10px;position: relative;}
+.move li{position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+		}
+			
+.move li:first-child{opacity: 1;}
+.move li img{width: 478px;height: 478px;display: block;}
+
+
+.l_pic{width: 478px;height: 478px;margin-top: 10px;}
+.l_pic img{width: 478px;height: 478px;}
+
+.l_pic1{width: 478px;height: 478px;margin-top: 10px;}
+.l_pic1 img{width: 478px;height: 478px;}
+
+.l_pic2{width: 478px;height: 236px;background: #f3ebde;margin-top: 10px;}
+
+.l_pic2_left{width: 234px;height: 234px;float: left;font-size: 12px;background: white;}
+.l_pic2_left img{width: 234px;height: 194px;}
+
+
+.l_pic2_right{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.l_pic2_right img{width: 234px;height: 194px;}
+
+.l_pic3{width: 478px;height: 478px;margin-top: 10px;}
+.l_pic3 img{width: 478px;height: 478px;}
+
+.l_pic4{width: 478px;height: 234px;margin-top: 10px;}
+.l_pic4_left{width: 234px;height: 234px;float: left;font-size: 12px;background: white;}
+.l_pic4_left img{width: 234px;height: 194px;}
+
+
+.l_pic4_right{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.l_pic4_right img{width: 234px;height: 194px;}
+
+.l_pic5{width: 478px;height: 1022px;}
+.l_pic5 div{margin-top: 10px;}
+.l_pic5_2 {margin-left: 10px;}
+.l_pic5_1{width: 234px;height: 234px;float: left;font-size: 12px;background: white;}
+.l_pic5_1 img{width: 234px;height: 194px;}
+
+.l_pic5_2{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.l_pic5_2 img{width: 234px;height: 194px;}
+
+/*right*/
+.right_pic1{width: 734px;height:167px ;position: relative;}
+.right_pic1 img{position: absolute;bottom: 10px;right: 0;}
+
+.right_pic2{width: 734px;height: 234px;background:white;margin-top: 10px;font-size: 12px;}
+.right_pic2 div{margin-left: 10px;}
+.right_pic2_1{background: white;width: 234px;height: 234px;float: left;}
+.right_pic2_1 img{width: 234px;height: 194px;}
+
+.right_pic2_2{background: white;width: 234px;height: 234px;float: left;}
+.right_pic2_2 img{width: 234px;height: 194px;}
+
+.right_pic2_3{background: white;width: 234px;height: 234px;float: left;}
+.right_pic2_3 img{width: 234px;height: 194px;}
+
+.right_pic3{width: 734px;height: 478px;margin-top: 10px;background: white;}
+.right_pic3_1{width: 478px;height: 478px;float: right;}
+.right_pic3_1 img{width: 478px;height: 478px;}
+
+.right_pic3_2{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.right_pic3_2 img{width: 234px;height: 194px;}
+
+.right_pic3_3{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;margin-top: 10px;background: white;}
+.right_pic3_3 img{width: 234px;height: 194px;}
+
+.right_pic4{width: 734px;height: 478px;margin-top: 10px;margin-left: 10px;}
+.right_pic4_1{width: 478px;height: 478px;float: left;}
+.right_pic4_1 img{width: 478px;height: 478px;}
+
+.right_pic4_2{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.right_pic4_2 img{width: 234px;height: 194px;}
+
+.right_pic4_3{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;margin-top: 10px;background: white;}
+.right_pic4_3 img{width: 234px;height: 194px;}
+
+.right_pic_end{width: 734px;height: 1460px;margin-top: 10px;}
+.right_pic_end_1{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;margin-top: 10px;}
+.right_pic_end_1 img{width: 234px;height: 194px;}
+
+
+.right_pic_end_2{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.right_pic_end_2 img{width: 234px;height: 194px;}
+
+#left, #right {
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				position: absolute;
+				background:#f3ebde;
+				cursor: pointer;
+				top: 45%;
+				z-index: 2;
+				border-radius: 50%;
+				text-align: center;
+				color: black;
+				font-size: 22px;
+			}
+			#left {
+				left: 10px;
+			}
+			#right {
+				right: 10px;
+			}
+
+.right_pic2 img{position: relative;}
+/*.right_pic2 img:hover{top:-5px}*/

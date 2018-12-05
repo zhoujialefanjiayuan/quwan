@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/head.css" rel="stylesheet" type="text/css" />
+		<link href="css/money.css" rel="stylesheet" type="text/css"  /> 
+		<link href="css/jquery.idcode.css" type="text/css" rel="stylesheet">
+		<style>
+			img{cursor: pointer;}
+			a{text-decoration: none;color: black;}
+		</style>
+		<script src="jquery-1.12.0.js"></script>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script src="js/jquery-1.12.3.min.js"></script>
+		
+		<script type="text/javascript" src="js/toubu.js"></script>
+		<script type="text/javascript" src="js/money.js"></script>
+		<script src="js/jquery.idcode.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+	</head>
+	<body>
+		
+		<!--头部开始 -->
+		<div id="head">
+			<div class="header">
+				<img class="simple" src="headimg/hongqi.jpg" />
+				<div class="h_left">
+					<ul>
+						<li >
+							<a href="index.html"><img src="headimg/logo.jpg" style="width: 90px;height: 50px;"/></a>
+						</li>
+						<li>
+							<a href="#">每日上新</a>
+						</li>
+						<li>
+							<a href="#">TOP50</a>
+						</li>
+						<li>
+							<a href="#">我勒个趣</a>
+						</li>
+						<li>
+							<a href="#">全球FUN</a>
+						</li>
+						<li>
+							<a href="#">趣味App</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="h_right">
+					<input class="tet" type="text" />
+					<div class="search" style="background: url(headimg/serrch.jpg) center;">
+
+					</div>
+					<div class="load">登录</div>
+					<div class="cookie">注册</div>
+					<div class="shoping"><a href="money.html">购物车</a></div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--load -->
+		<div class="loading">
+
+			<div class="_load">
+				<div class="load_top">
+					登录趣玩
+					<input type="button" value="关闭"  class="load_close"/>
+				</div>
+				
+				<div class="_add_pic">
+					<img src="midpic/qq.jpg" />
+					<img src="midpic/persn.jpg" />
+					<img src="midpic/weibo.jpg" />
+				</div>
+				
+				<div class="load_user">
+					<h4>通过趣玩帐号登录</h4>
+					帐号&nbsp;<input type="text" class="load_user_text"/>
+					密码&nbsp;<input type="password" class="load_user_paw" />
+					
+					<input type="button" value="登录" class="load_enter"/>
+					<input type="button" value="快速注册" class="load_new"/>
+				</div>
+				
+			</div>
+
+		</div>
+
+		<!--cookie -->
+		<div class="add">
+
+			<div class="_add">
+				<div class="add_top">
+					注册趣玩
+					<input type="button" value="关闭" class="add_close" />
+				</div>
+				<div class="add_user">
+					<h4>注册趣玩帐号</h4>
+					帐号&nbsp;<input type="text" placeholder="用户名长度在6-10之间，只能是字母、数字、下划线" class="add_user_text"/>
+					昵称&nbsp;<input type="text" class="add_user_use" />
+					
+					密码&nbsp;<input type="password" class="add_user_paw" />
+					验证码&nbsp;<input type="text" id ="Txtidcode" class ="txtVerification"><span id="idcode"></span>
+					<input type="button" value="注册" class="add_new"/>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="nava">
+			<div class="nav">
+				<ul class="nav_list">
+					<li>家居日用
+						<div class="active">
+							<ul class="active_show">
+								<li>保暖</li>
+								<li>抱枕.靠垫.坐垫</li>
+								<li>宠物用品</li>
+								<li>床上用品</li>
+								<li>打火器.电子烟</li>
+								<li>灯光照明</li>
+								<li>孕妇.母婴</li>
+								<li>购物车.购物袋</li>
+								<li>计量用品</li>
+								<li>家具</li>
+								<li>乐器</li>
+							</ul>
+
+						</div>
+					</li>
+
+					<li>装饰摆设
+						<div class="active">
+							<ul class="active_show">
+								<li>保暖</li>
+								<li>抱枕.靠垫.坐垫</li>
+								<li>宠物用品</li>
+								<li>床上用品</li>
+								<li>打火器.电子烟</li>
+								<li>灯光照明</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>厨房餐饮
+						<div class="active">
+							<ul class="active_show">
+								<li>保暖</li>
+								<li>抱枕.靠垫.坐垫</li>
+								<li>宠物用品</li>
+								<li>床上用品</li>
+								<li>打火器.电子烟</li>
+								<li>灯光照明</li>
+
+							</ul>
+						</div>
+
+					</li>
+					<li>卫浴清洁
+						<div class="active">
+							<ul class="active_show">
+								<li>保暖</li>
+								<li>抱枕.靠垫.坐垫</li>
+								<li>宠物用品</li>
+								<li>床上用品</li>
+								<li>打火器.电子烟</li>
+								<li>灯光照明</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>办公文具
+						<div class="active">
+							<ul class="active_show">
+								<li>保暖</li>
+								<li>抱枕.靠垫.坐垫</li>
+								<li>宠物用品</li>
+								<li>床上用品</li>
+								<li>打火器.电子烟</li>
+								<li>灯光照明</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>旅游出行
+						<div class="active">
+							<ul class="active_show">
+								<li>保暖</li>
+								<li>抱枕.靠垫.坐垫</li>
+								<li>宠物用品</li>
+								<li>床上用品</li>
+								<li>打火器.电子烟</li>
+								<li>灯光照明</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>运动户外</li>
+					<li>玩具娱乐</li>
+					<li>数码3C</li>
+					<li>智能科技</li>
+					<li>潮流装扮</li>
+					<li>美容健康</li>
+					<li>安全防灾</li>
+					<li>食品饮料</li>
+					<li>视屏找好玩</li>
+				</ul>
+			</div>
+
+		</div>
+		<!--头部结束 -->
+		
+		<!--mid -->
+		<div class="middle">
+			<div class="mid">
+				<div class="mid_top">
+					<a href="#"><img src="midpic/shop1.jpeg"></a>
+				</div>
+				
+				<div class="money">
+					<h3>我的购物车  <span>满199元即免运费</span></h3>
+					<div class="_commodity">
+						商品列表
+					</div>
+					
+					<div class="_price">
+						价格
+					</div>
+					
+					<div class="_total">
+						total
+					</div>
+					
+					<div class="_dele">
+						全部删除
+					</div>
+					<div class="commodity">
+						
+					</div>
+					
+					<div class="price">
+						
+					</div>
+					
+					<div class="total">
+						
+					</div>
+					
+					<div class="dele">
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<!--mid-end -->
+		
+		<!--foot -->
+		<div class="footer">
+
+			<div class="foot">
+				<div class="foot_top">
+					<a href="#"><img src="headimg/footer_01.png" /></a>
+					<a href="#"><img src="headimg/footer_02.png" /></a>
+					<a href="#"><img src="headimg/footer_03.png" /></a>
+					<a href="#"><img src="headimg/footer_04.png" /></a>
+					<a href="#"><img src="headimg/footer_05.png" /></a>
+					<a href="#"><img src="headimg/footer_06.png" /></a>
+					<a href="#"><img src="headimg/footer_07.png" /></a>
+					<a href="#"><img src="headimg/footer_08.png" /></a>
+
+				</div>
+				<div class="foot_bot">
+
+					<ul>
+						<li>
+							<a href="#">积分计划</a>
+						</li>
+						<li>
+							<a href="#">优惠卡/礼品卡</a>
+						</li>
+						<li>
+							<a href="#">商品兑换券</a>
+						</li>
+						<li>
+							<a href="#">发票制度</a>
+						</li>
+						<li>
+							<a href="#">配送说明</a>
+						</li>
+						<li>
+							<a href="#">退货保障卡</a>
+						</li>
+						<li>
+							<a href="#">趣玩B2B官网</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="bot">
+				<div class="bot_top">
+					<ul>
+						<li>
+							<a href="#">关于我们</a>
+						</li>
+						<li>
+							<a href="#">联系我们</a>
+						</li>
+						<li>
+							<a href="#">友情链接</a>
+						</li>
+						<li>
+							<a href="#">经销加盟</a>
+						</li>
+						<li>
+							<a href="#">团购优惠</a>
+						</li>
+						<li>
+							<a href="#">网站地图</a>
+						</li>
+						<li>
+							<a href="#">加入趣玩</a>
+						</li>
+						<li>
+							<a href="#">诚信网站</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="bot_bot">
+					<p>趣玩网 2008-2016 成都玩者天下网络技术有限公司 版权所有 蜀ICP备14003947丨京ICP证100388号</p>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>

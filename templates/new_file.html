@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.0.js"></script>
+		<script>
+			$(function(){
+				
+				$.getJSON("json/userName.json", function(data){
+					console.log(data); //已经JSON解析过的对象
+					console.log(data.userName); //[zhangsan,lisi,wangwu,fw]
+				})
+
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
