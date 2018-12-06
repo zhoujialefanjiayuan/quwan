@@ -1,67 +1,81 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-	<head>
-        <style>
-            form
-            {
-                margin: 0;
-                padding: 0;
-            }
-        </style>
-		<meta charset="utf-8" />
-		<title></title>
-		<link href="/static/css/head.css" rel="stylesheet" type="text/css" />
-		<link href="/static/css/mid.css" rel="stylesheet" type="text/css"  />
-		<link href="/static/css/jquery.idcode.css" type="text/css" rel="stylesheet">
-		
-		<style>
-			img{cursor: pointer;}
-			a{text-decoration: none;color: black;}
-		</style>
-		<script src="/static/js/jquery-1.12.0.js"></script>
-		<script src="/static/js/jquery-1.12.3.js"></script>
-		
-		<script src="/static/js/jquery-1.12.3.min.js"></script>
-		<script src="/static/js/jquery.idcode.js"></script>
-		<script src="/static/js/jquery.cookie.js"></script>
-		
-		<script type="text/javascript" src="/static/js/toubu.js"></script>
-		<script type="text/javascript" src="/static/js/mid.js"></script>
+    <!-- Link Swiper's CSS -->
+    <style>
+        form {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link href="/static/css/swiper.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/head.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/mid.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/jquery.idcode.css" type="text/css" rel="stylesheet">
 
-        {% if isture %}
-            <script>
-            $(function(){$(".loading").css({"display": "block"})})
-            </script>
-        {% endif %}
-	</head>
 
-	<body>
-		<!--头部开始 -->
-		<div id="head">
-			<div class="header">
-				<img class="simple" src="/static/headimg/hongqi.jpg" />
-				<div class="h_left">
-					<ul>
-						<li >
-							<a href="index.html"><img src="/static/headimg/logo.jpg" style="width: 90px;height: 50px;"/></a>
-						</li>
-						<li><a href="#">每日上新</a></li>
-						<li><a href="#">TOP50</a></li>
-						<li><a href="#">我勒个趣</a></li>
-						<li><a href="#">全球FUN</a></li>
-						<li><a href="#">趣味App</a></li>
-					</ul>
-				</div>
+    <style>
+        img {
+            cursor: pointer;
+        }
 
-				<div class="h_right">
-					<input class="tet" type="text" />
-					<div class="search" style="background: url(/static/headimg/serrch.jpg) center;">
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+    <script src="/static/js/swiper.js"></script>
 
-					</div>
-                    {% if get_user  %}
-                         <div class="load" style="font-size: 100%">{{ get_user.username }}</div>
-                         <div  ><a href='{% url 'app:out' %}' style="width: 55px;
+    <script src="/static/js/jquery-1.12.0.js"></script>
+    <script src="/static/js/jquery-1.12.3.js"></script>
+
+    <script src="/static/js/jquery-1.12.3.min.js"></script>
+    <script src="/static/js/jquery.idcode.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="/static/js/toubu.js"></script>
+    <script type="text/javascript" src="/static/js/mid.js"></script>
+
+    {% if isture %}
+        <script>
+            $(function () {
+                $(".loading").css({"display": "block"})
+            })
+        </script>
+    {% endif %}
+</head>
+
+<body>
+<!--头部开始 -->
+<div id="head">
+    <div class="header">
+        <img class="simple" src="/static/headimg/hongqi.jpg"/>
+        <div class="h_left">
+            <ul>
+                <li>
+                    <a href="index.html"><img src="/static/headimg/logo.jpg" style="width: 90px;height: 50px;"/></a>
+                </li>
+                <li><a href="#">每日上新</a></li>
+                <li><a href="#">TOP50</a></li>
+                <li><a href="#">我勒个趣</a></li>
+                <li><a href="#">全球FUN</a></li>
+                <li><a href="#">趣味App</a></li>
+            </ul>
+        </div>
+
+        <div class="h_right">
+            <input class="tet" type="text"/>
+            <div class="search" style="background: url(/static/headimg/serrch.jpg) center;">
+
+            </div>
+            {% if get_user %}
+                <div class="load" style="font-size: 100%">{{ get_user.username }}</div>
+                <div><a href='{% url 'app:out' %}' style="width: 55px;
 	height: 50px;
 	float: left;
 	background: #535353;
@@ -69,649 +83,666 @@
 	line-height: 50px;
 	color: white;
 	font-size: 14px;">退出</a>
-                         </div>
-                    {% else %}
-                        <div class="load">登录</div>
-                        <div class="cookie">注册</div>
-                    {% endif %}
+                </div>
+            {% else %}
+                <div class="load">登录</div>
+                <div class="cookie">注册</div>
+            {% endif %}
 
 
 
-					<div class="shoping"><a href="/templates/money.html">购物车</a></div>
+            <div class="shoping"><a href="/templates/money.html">购物车</a></div>
 
-				</div>
-			</div>
-		</div>
-
-		<!--load -->
-		<div class="loading">
-
-			<div class="_load">
-				<div class="load_top">
-					登录趣玩
-					<input type="button" value="关闭"  class="load_close"/>
-				</div>
-
-				<div class="_add_pic">
-					<img src="/static/midpic/qq.jpg" />
-					<img src="/static/midpic/persn.jpg" />
-					<img src="/static/midpic/weibo.jpg" />
-				</div>
-
-				<div class="load_user">
-					<h4>通过趣玩帐号登录</h4>
-                    <form   action={% url 'app:login' %}   method="post"  >
-                        {% csrf_token %}
-
-					帐号&nbsp;<input type="text" class="load_user_text" name="count"/>
-					密码&nbsp;<input type="password" class="load_user_paw" name="password" />
-
-					    <input type="submit" value="登录" />
-                        {# 密码或用户名错误判断是否冒红#}
-                        {% if isture %}<p style="color: red">密码或用户名错误</p>{% endif %}
-
-
-
-{#					<input type="button" value="快速注册" class="load_new"/>#}
-
-                    </form>
-				</div>
-
-			</div>
-
-		</div>
-		
-		<!--cookie -->
-		<div class="add">
-			
-			<div class="_add">
-				<div class="add_top">
-					注册趣玩
-					<input type="button" value="关闭"  class="add_close"/>
-				</div>
-				<div class="_add_pic">
-					<img src="/static/midpic/qq.jpg" />
-					<img src="/static/midpic/persn.jpg" />
-					<img src="/static/midpic/weibo.jpg" />
-				</div>
-				
-				<div class="add_user">
-					<h4>注册趣玩帐号</h4>
-                    <form action={% url 'app:regist' %}  method="post"  >
-                        {% csrf_token %}
-					帐号&nbsp;<input type="text" placeholder="用户名长度在6-10之间，只能是字母、数字、下划线" class="add_user_text"  name="count"/>
-					昵称&nbsp;<input type="text" class="add_user_use"  name="username" />
-					
-					密码&nbsp;<input type="password" class="add_user_paw"  name="password"/>
-					验证码&nbsp;<input type="text" id ="Txtidcode" class ="txtVerification"><span id="idcode"></span>
-					<input type="submit" value="注册" class="add_new"/>
-                    </form>
-				</div>
-				
-			</div>
-			
-		</div>
-		
-		
-
-		<div class="nava">
-			<div class="nav">
-				<ul class="nav_list">
-					<li>家居日用
-						<div class="active">
-							<ul class="active_show">
-								<li>保暖</li>
-								<li>抱枕.靠垫.坐垫</li>
-								<li>宠物用品</li>
-								<li>床上用品</li>
-								<li>打火器.电子烟</li>
-								<li>灯光照明</li>
-								<li>孕妇.母婴</li>
-								<li>购物车.购物袋</li>
-								<li>计量用品</li>
-								<li>家具</li>
-								<li>乐器</li>
-							</ul>
-
-						</div>
-					</li>
-						
-					<li>装饰摆设
-						<div class="active">
-							<ul class="active_show">
-								<li>保暖</li>
-								<li>抱枕.靠垫.坐垫</li>
-								<li>宠物用品</li>
-								<li>床上用品</li>
-								<li>打火器.电子烟</li>
-								<li>灯光照明</li>
-								
-							</ul>
-						</div>
-					</li>
-					<li>厨房餐饮
-						<div class="active">
-							<ul class="active_show">
-								<li>保暖</li>
-								<li>抱枕.靠垫.坐垫</li>
-								<li>宠物用品</li>
-								<li>床上用品</li>
-								<li>打火器.电子烟</li>
-								<li>灯光照明</li>
-								
-							</ul>
-						</div>
-						
-					</li>
-					<li>卫浴清洁
-						<div class="active">
-							<ul class="active_show">
-								<li>保暖</li>
-								<li>抱枕.靠垫.坐垫</li>
-								<li>宠物用品</li>
-								<li>床上用品</li>
-								<li>打火器.电子烟</li>
-								<li>灯光照明</li>
-								
-							</ul>
-						</div>
-					</li>
-					<li>办公文具
-						<div class="active">
-							<ul class="active_show">
-								<li>保暖</li>
-								<li>抱枕.靠垫.坐垫</li>
-								<li>宠物用品</li>
-								<li>床上用品</li>
-								<li>打火器.电子烟</li>
-								<li>灯光照明</li>
-								
-							</ul>
-						</div>
-					</li>
-					<li>旅游出行
-						<div class="active">
-							<ul class="active_show">
-								<li>保暖</li>
-								<li>抱枕.靠垫.坐垫</li>
-								<li>宠物用品</li>
-								<li>床上用品</li>
-								<li>打火器.电子烟</li>
-								<li>灯光照明</li>
-								
-							</ul>
-						</div>
-					</li>
-					<li>运动户外</li>
-					<li>玩具娱乐</li>
-					<li>数码3C</li>
-					<li>智能科技</li>
-					<li>潮流装扮</li>
-					<li>美容健康</li>
-					<li>安全防灾</li>
-					<li>食品饮料</li>
-					<li>视屏找好玩</li>
-				</ul>
-			</div>
-
-		</div>
-		<!--头部结束 -->
-        
-        
-        <!--	mid start-->
-        <div class="midlle" style="width: 100%;height:3630px;background:#f3ebde;">
-        	
-	        <div class="mid" style="width: 1263px;height: 3630px;margin: 0 auto;">
-	        	<div class="mid_left">
-	        		<div class="title">
-	        			<h3>欢迎来到趣玩</h3>
-	        			<p>在这里，邂逅全球最有趣好玩的商品，发现趣味相投的朋友！</p>
-	        		</div>
-	        		
-	        		<div class="driving">
-	        			<ul class="move"></ul>
-	        			<div id="left"> < </div>
-						<div id="right"> > </div>
-	        		</div>
-	        		
-	        		<div class="l_pic">
-	        			<a href="#"><img src="/static/midpic/cat.jpg"  /> </a>
-	        		</div>
-	        		
-	        		<div class="l_pic1">
-	        			<a href="#"><img src="/static/midpic/bag.jpg"  /> </a>
-	        		</div>
-	        		
-	        		<div class="l_pic2">
-	        			<div class="l_pic2_left">
-	        				<a href="#">
-	        					<img src="/static/midpic/ball.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic2_right">
-	        				<a href="#">
-	        					<img src="/static/midpic/watch.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        		<div class="l_pic3">
-	        			<a href="#"><img src="/static/midpic/heart.jpg" /></a>
-	        		</div>
-	        		
-	        		<div class="l_pic4">
-	        			<div class="l_pic4_left">
-	        				<a href="#">
-	        					<img src="/static/midpic/globleball.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic4_right">
-	        				<a href="#">
-	        					<img src="/static/midpic/sportbag.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        		<div class="l_pic5">
-	        			<div class="l_pic5_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/power.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic5_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/dianzi.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic5_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/peper.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic5_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/cap.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic5_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/blue.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic5_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/3d.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			<div class="l_pic5_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/glass.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="l_pic5_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/girl.jpg" />
-	        				</a>
-	        				<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        		
-	        		
-	        	</div>
-	        	
-	        	
-	        	<!--mid right -->
-	        	<div class="mid_right" style="float: left;width:759px;height: 3630px;">
-	        		
-	        		<div class="right_pic1" >
-	        			<a href="http://www.baidu.com">
-	        				
-	        				<img src="/static/midpic/1472629575.jpeg" />
-	        			</a>
-	        			
-	        		</div>
-	        		
-	        		<div class="right_pic2">
-	        			<div class="right_pic2_1">
-	        				
-	        			</div>
-	        			
-	        			<div class="right_pic2_2">
-	        				
-	        			</div>
-	        			
-	        			<div class="right_pic2_3">
-	        				
-	        			</div>
-	        		</div>
-	        		
-	        		<div class="right_pic3">
-	        			<div class="right_pic3_1">
-	        				<img src="/static/midpic/zhongqiu.jpg" />
-	        			</div>
-	        			
-	        			<div class="right_pic3_2">
-	        				<!--<a href="#">
-	        					<img src="midpic/niu.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>-->
-	        			</div>
-	        			
-	        			<div class="right_pic3_3">
-	        				<a href="shop.html">
-	        					<img src="/static/midpic/niu.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        		<div class="right_pic4">
-	        			<div class="right_pic4_1">
-	        				<img src="/static/midpic/yellow.jpg" />
-	        			</div>
-	        			
-	        			<div class="right_pic4_2">
-	        				<a href="shop.html">
-	        					<img src="/static/midpic/sportbag.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic4_3">
-	        				<a href="shop.html">
-	        					<img src="/static/midpic/san.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        		<div class="right_pic4">
-	        			<div class="right_pic4_1">
-	        				<img src="/static/midpic/zhongqiu.jpg" />
-	        			</div>
-	        			
-	        			<div class="right_pic4_2">
-	        				<a href="shop.html">
-	        					<img src="/static/midpic/globleball.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic4_3">
-	        				<a href="shop.html">
-	        					<img src="/static/midpic/bag.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        		<div class="right_pic_end">
-	        			<div class="right_pic_end_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/mark.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/homee.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_2">
-	        				<a href="#">
-	        					<img src="/static/midpic/life.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/atsmart.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/bird.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/drogn.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/cook.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/hear.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/inou.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/note.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/spardar.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/bird.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/spy.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/wan.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/yellow.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/girl.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/homee.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        			
-	        			<div class="right_pic_end_1">
-	        				<a href="#">
-	        					<img src="/static/midpic/life.jpg" />
-	        					<h4>手工定制水仙椰子灯-NO.27</h4>
-	        				</a>
-	        				
-	        				<p>￥ 1888.00</p>
-	        			</div>
-	        		</div>
-	        		
-	        	</div>
-	        	<!--mid right 结束 -->
-        	</div>
-	    </div>
-         <!--	mid 结束-->
-         
-         
-        
-         <!--foot -->
-        <div class="footer">
-        	
-        	<div class="foot">
-        		<div class="foot_top">
-        			<a href="#"><img src="/static/headimg/footer_01.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_02.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_03.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_04.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_05.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_06.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_07.png" /></a>
-        			<a href="#"><img src="/static/headimg/footer_08.png" /></a>
-        			
-        		</div>
-        		<div class="foot_bot">
-        			
-        			<ul>
-	        			<li><a href="#">积分计划</a></li>
-	        			<li><a href="#">优惠卡/礼品卡</a></li>
-	        			<li><a href="#">商品兑换券</a></li>
-	        			<li><a href="#">发票制度</a></li>
-	        			<li><a href="#">配送说明</a></li>
-	        			<li><a href="#">退货保障卡</a></li>
-	        			<li><a href="#">趣玩B2B官网</a></li>
-        			</ul>
-        		</div>
-        	</div>
-        	
-        	<div class="bot">
-        		<div class="bot_top">
-        			<ul>
-	        			<li><a href="#">关于我们</a></li>
-	        			<li><a href="#">联系我们</a></li>
-	        			<li><a href="#">友情链接</a></li>
-	        			<li><a href="#">经销加盟</a></li>
-	        			<li><a href="#">团购优惠</a></li>
-	        			<li><a href="#">网站地图</a></li>
-	        			<li><a href="#">加入趣玩</a></li>
-	        			<li><a href="#">诚信网站</a></li>
-        			</ul>
-        		</div>
-        		
-        		<div class="bot_bot">
-        			<p>趣玩网 2008-2016 成都玩者天下网络技术有限公司 版权所有 蜀ICP备14003947丨京ICP证100388号</p>
-        		</div>
-        	</div>
-        	
         </div>
-        
+    </div>
+</div>
 
-	</body>
+<!--load -->
+<div class="loading">
+
+    <div class="_load">
+        <div class="load_top">
+            登录趣玩
+            <input type="button" value="关闭" class="load_close"/>
+        </div>
+
+        <div class="_add_pic">
+            <img src="/static/midpic/qq.jpg"/>
+            <img src="/static/midpic/persn.jpg"/>
+            <img src="/static/midpic/weibo.jpg"/>
+        </div>
+
+        <div class="load_user">
+            <h4>通过趣玩帐号登录</h4>
+            <form action={% url 'app:login' %}   method="post">
+                {% csrf_token %}
+
+                帐号&nbsp;<input type="text" class="load_user_text" name="count"/>
+                密码&nbsp;<input type="password" class="load_user_paw" name="password"/>
+
+                <input type="submit" value="登录"/>
+                {# 密码或用户名错误判断是否冒红#}
+                {% if isture %}<p style="color: red">密码或用户名错误</p>{% endif %}
+
+
+
+                {#					<input type="button" value="快速注册" class="load_new"/>#}
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<!--cookie -->
+<div class="add">
+
+    <div class="_add">
+        <div class="add_top">
+            注册趣玩
+            <input type="button" value="关闭" class="add_close"/>
+        </div>
+        <div class="_add_pic">
+            <img src="/static/midpic/qq.jpg"/>
+            <img src="/static/midpic/persn.jpg"/>
+            <img src="/static/midpic/weibo.jpg"/>
+        </div>
+
+        <div class="add_user">
+            <h4>注册趣玩帐号</h4>
+            <form action={% url 'app:regist' %}  method="post">
+                {% csrf_token %}
+                帐号&nbsp;<input type="text" placeholder="用户名长度在6-10之间，只能是字母、数字、下划线" class="add_user_text" name="count"/>
+                昵称&nbsp;<input type="text" class="add_user_use" name="username"/>
+
+                密码&nbsp;<input type="password" class="add_user_paw" name="password"/>
+                验证码&nbsp;<input type="text" id="Txtidcode" class="txtVerification"><span id="idcode"></span>
+                <input type="submit" value="注册" class="add_new"/>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="nava">
+    <div class="nav">
+        <ul class="nav_list">
+            <li>家居日用
+                <div class="active">
+                    <ul class="active_show">
+                        <li>保暖</li>
+                        <li>抱枕.靠垫.坐垫</li>
+                        <li>宠物用品</li>
+                        <li>床上用品</li>
+                        <li>打火器.电子烟</li>
+                        <li>灯光照明</li>
+                        <li>孕妇.母婴</li>
+                        <li>购物车.购物袋</li>
+                        <li>计量用品</li>
+                        <li>家具</li>
+                        <li>乐器</li>
+                    </ul>
+
+                </div>
+            </li>
+
+            <li>装饰摆设
+                <div class="active">
+                    <ul class="active_show">
+                        <li>保暖</li>
+                        <li>抱枕.靠垫.坐垫</li>
+                        <li>宠物用品</li>
+                        <li>床上用品</li>
+                        <li>打火器.电子烟</li>
+                        <li>灯光照明</li>
+
+                    </ul>
+                </div>
+            </li>
+            <li>厨房餐饮
+                <div class="active">
+                    <ul class="active_show">
+                        <li>保暖</li>
+                        <li>抱枕.靠垫.坐垫</li>
+                        <li>宠物用品</li>
+                        <li>床上用品</li>
+                        <li>打火器.电子烟</li>
+                        <li>灯光照明</li>
+
+                    </ul>
+                </div>
+
+            </li>
+            <li>卫浴清洁
+                <div class="active">
+                    <ul class="active_show">
+                        <li>保暖</li>
+                        <li>抱枕.靠垫.坐垫</li>
+                        <li>宠物用品</li>
+                        <li>床上用品</li>
+                        <li>打火器.电子烟</li>
+                        <li>灯光照明</li>
+
+                    </ul>
+                </div>
+            </li>
+            <li>办公文具
+                <div class="active">
+                    <ul class="active_show">
+                        <li>保暖</li>
+                        <li>抱枕.靠垫.坐垫</li>
+                        <li>宠物用品</li>
+                        <li>床上用品</li>
+                        <li>打火器.电子烟</li>
+                        <li>灯光照明</li>
+
+                    </ul>
+                </div>
+            </li>
+            <li>旅游出行
+                <div class="active">
+                    <ul class="active_show">
+                        <li>保暖</li>
+                        <li>抱枕.靠垫.坐垫</li>
+                        <li>宠物用品</li>
+                        <li>床上用品</li>
+                        <li>打火器.电子烟</li>
+                        <li>灯光照明</li>
+
+                    </ul>
+                </div>
+            </li>
+            <li>运动户外</li>
+            <li>玩具娱乐</li>
+            <li>数码3C</li>
+            <li>智能科技</li>
+            <li>潮流装扮</li>
+            <li>美容健康</li>
+            <li>安全防灾</li>
+            <li>食品饮料</li>
+            <li>视屏找好玩</li>
+        </ul>
+    </div>
+
+</div>
+<!--头部结束 -->
+
+
+<!--	mid start-->
+<div class="midlle" style="width: 100%;height:3630px;background:#f3ebde;">
+
+    <div class="mid" style="width: 1263px;height: 3630px;margin: 0 auto;">
+        <div class="mid_left">
+            <div class="title">
+                <h3>欢迎来到趣玩</h3>
+                <p>在这里，邂逅全球最有趣好玩的商品，发现趣味相投的朋友！</p>
+            </div>
+
+            <div class="driving swiper-container">
+                {#轮播部分#}
+                <ul class="move swiper-wrapper">
+                {% for shop in shops %}
+                    <a>
+                    <li class="swiper-slide"><img src="{{shop.path }}"></li>
+                    </a>
+                {% endfor %}
+                </ul>
+
+{#                <div class="swiper-pagination"></div>#}
+    <!-- Add Arrows -->
+{#                <div class="swiper-button-next"></div>#}
+{#                <div class="swiper-button-prev"></div>#}
+                         <div id="left"> < </div>
+						<div id="right"> > </div>
+            </div>
+
+            {#      轮播图#}
+{#            <div class="swiper-container" id="topSwiper">#}
+{#                <div class="swiper-wrapper">#}
+{#                    {% for wheel in wheels %}#}
+{#                        <div class="swiper-slide">#}
+{#                            <img src="{{ wheel.img }}" alt="">#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#                <!-- Add Pagination -->#}
+{#                <div class="swiper-pagination"></div>#}
+{#            </div>#}
+
+            <div class="l_pic">
+                <a href="#"><img src="/static/midpic/cat.jpg"/> </a>
+            </div>
+
+            <div class="l_pic1">
+                <a href="#"><img src="/static/midpic/bag.jpg"/> </a>
+            </div>
+
+            <div class="l_pic2">
+
+                <div class="l_pic2_left">
+                    <a href="#">
+                        <img src="/static/midpic/ball.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic2_right">
+                    <a href="#">
+                        <img src="/static/midpic/watch.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+            <div class="l_pic3">
+                <a href="#"><img src="/static/midpic/heart.jpg"/></a>
+            </div>
+
+            <div class="l_pic4">
+                <div class="l_pic4_left">
+                    <a href="#">
+                        <img src="/static/midpic/globleball.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic4_right">
+                    <a href="#">
+                        <img src="/static/midpic/sportbag.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+            <div class="l_pic5">
+                <div class="l_pic5_1">
+                    <a href="#">
+                        <img src="/static/midpic/power.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic5_2">
+                    <a href="#">
+                        <img src="/static/midpic/dianzi.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic5_1">
+                    <a href="#">
+                        <img src="/static/midpic/peper.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic5_2">
+                    <a href="#">
+                        <img src="/static/midpic/cap.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic5_1">
+                    <a href="#">
+                        <img src="/static/midpic/blue.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic5_2">
+                    <a href="#">
+                        <img src="/static/midpic/3d.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+                <div class="l_pic5_1">
+                    <a href="#">
+                        <img src="/static/midpic/glass.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="l_pic5_2">
+                    <a href="#">
+                        <img src="/static/midpic/girl.jpg"/>
+                    </a>
+                    <h4>手工定制水仙椰子灯-NO.27</h4>
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!--mid right -->
+        <div class="mid_right" style="float: left;width:759px;height: 3630px;">
+
+            <div class="right_pic1">
+                <a href="http://www.baidu.com">
+
+                    <img src="/static/midpic/1472629575.jpeg"/>
+                </a>
+
+            </div>
+
+            <div class="right_pic2">
+                <div class="right_pic2_1">
+                </div>
+                <div class="right_pic2_2">
+                </div>
+                <div class="right_pic2_3">
+                </div>
+            </div>
+            <div class="right_pic3">
+                <div class="right_pic3_1">
+                    <img src="/static/midpic/zhongqiu.jpg"/>
+                </div>
+
+                <div class="right_pic3_2">
+                    <!--<a href="#">
+                        <img src="midpic/niu.jpg" />
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>-->
+                </div>
+
+                <div class="right_pic3_3">
+                    <a href="shop.html">
+                        <img src="/static/midpic/niu.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+            <div class="right_pic4">
+                <div class="right_pic4_1">
+                    <img src="/static/midpic/yellow.jpg"/>
+                </div>
+
+                <div class="right_pic4_2">
+                    <a href="shop.html">
+                        <img src="/static/midpic/sportbag.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic4_3">
+                    <a href="shop.html">
+                        <img src="/static/midpic/san.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+            <div class="right_pic4">
+                <div class="right_pic4_1">
+                    <img src="/static/midpic/zhongqiu.jpg"/>
+                </div>
+
+                <div class="right_pic4_2">
+                    <a href="shop.html">
+                        <img src="/static/midpic/globleball.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic4_3">
+                    <a href="shop.html">
+                        <img src="/static/midpic/bag.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+            <div class="right_pic_end">
+                <div class="right_pic_end_2">
+                    <a href="#">
+                        <img src="/static/midpic/mark.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_2">
+                    <a href="#">
+                        <img src="/static/midpic/homee.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_2">
+                    <a href="#">
+                        <img src="/static/midpic/life.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/atsmart.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/bird.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/drogn.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/cook.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/hear.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/inou.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/note.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/spardar.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/bird.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/spy.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/wan.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/yellow.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/girl.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/homee.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+
+                <div class="right_pic_end_1">
+                    <a href="#">
+                        <img src="/static/midpic/life.jpg"/>
+                        <h4>手工定制水仙椰子灯-NO.27</h4>
+                    </a>
+
+                    <p>￥ 1888.00</p>
+                </div>
+            </div>
+
+        </div>
+        <!--mid right 结束 -->
+    </div>
+</div>
+<!--	mid 结束-->
+
+
+<!--foot -->
+<div class="footer">
+
+    <div class="foot">
+        <div class="foot_top">
+            <a href="#"><img src="/static/headimg/footer_01.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_02.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_03.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_04.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_05.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_06.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_07.png"/></a>
+            <a href="#"><img src="/static/headimg/footer_08.png"/></a>
+
+        </div>
+        <div class="foot_bot">
+
+            <ul>
+                <li><a href="#">积分计划</a></li>
+                <li><a href="#">优惠卡/礼品卡</a></li>
+                <li><a href="#">商品兑换券</a></li>
+                <li><a href="#">发票制度</a></li>
+                <li><a href="#">配送说明</a></li>
+                <li><a href="#">退货保障卡</a></li>
+                <li><a href="#">趣玩B2B官网</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="bot">
+        <div class="bot_top">
+            <ul>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="#">友情链接</a></li>
+                <li><a href="#">经销加盟</a></li>
+                <li><a href="#">团购优惠</a></li>
+                <li><a href="#">网站地图</a></li>
+                <li><a href="#">加入趣玩</a></li>
+                <li><a href="#">诚信网站</a></li>
+            </ul>
+        </div>
+
+        <div class="bot_bot">
+            <p>趣玩网 2008-2016 成都玩者天下网络技术有限公司 版权所有 蜀ICP备14003947丨京ICP证100388号</p>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
 
 </html>
