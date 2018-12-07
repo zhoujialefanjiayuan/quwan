@@ -56,9 +56,9 @@
 .right_pic1{width: 734px;height:167px ;position: relative;}
 .right_pic1 img{position: absolute;bottom: 10px;right: 0;}
 
-.right_pic2{width: 734px;height: 234px;background:white;margin-top: 10px;font-size: 12px;}
-.right_pic2 div{margin-left: 10px;}
-.right_pic2_1{background: white;width: 234px;height: 234px;float: left;}
+.right_pic2{width:734px; height:234px;background:white;margin-top:10px;font-size:12px;}
+.right_pic2 div{margin-left:10px;}
+.right_pic2_1{background:white; width:234px;height: 234px;float: left;}
 .right_pic2_1 img{width: 234px;height: 194px;}
 
 .right_pic2_2{background: white;width: 234px;height: 234px;float: left;}
@@ -116,5 +116,5 @@
 				right: 10px;
 			}
 
-.right_pic2 img{position: relative;}
+/*.right_pic2 img{position: relative;}*/
 /*.right_pic2 img:hover{top:-5px}*/

@@ -7,5 +7,6 @@ urlpatterns=[
     url(r'^index.html$',views.index,name='index'),
     url(r'^login$',views.login,name='login'),
     url(r'^regist$',views.regist,name="regist"),
-    url(r'^out$',views.out,name='out')
+    url(r'^out$',views.out,name='out'),
+    url(r'^shop_date$',views.shop_date,name='shop_date')
 ]

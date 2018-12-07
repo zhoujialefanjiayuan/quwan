@@ -22,12 +22,15 @@ def index(request):
     #登陆验证身份
     token = request.session.get('token')
     shops = Shops.objects.all()
+    # 轮播图使用图片
     needshops = shops[18:22]
+    # 渲染使用的图片
+    showshops = shops[0:3]
     if token:
         get_user =Users.objects.get(token=token)
-        return render(request,'index.html',context={'get_user':get_user,'shops':needshops})
+        return render(request,'index.html',context={'get_user':get_user,'shops':needshops,'showshops':showshops})
     else:
-        return render(request, 'index.html',context={'shops':needshops})
+        return render(request, 'index.html',context={'shops':needshops,'showshops':showshops})
 
 # 登录
 def login(request):
@@ -69,3 +72,11 @@ def regist(request):
 def out(request):
     request.session.flush()
     return redirect('app:index')
+
+# 商品详情
+def shop_date(request):
+    shop_date = Shops.objects.all()[0:3]
+
+
+    return render(request,'shop.html')
+
