@@ -59,7 +59,7 @@ html {
 #smallImg {
 	width: 360px;
 	height: 460px;
-	background: url(../midpic/phone.jpg) center;
+	/*background: url(../midpic/phone.jpg) center;*/
 	background-size: cover;
 	position: absolute;
 	left: 40px;

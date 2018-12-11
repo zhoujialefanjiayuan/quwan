@@ -35,7 +35,7 @@
     <script src="/static/js/jquery-1.12.0.js"></script>
     <script src="/static/js/jquery-1.12.3.js"></script>
 
-    <script src="/static/js/jquery-1.12.3.min.js"></script>
+{#    <script src="/static/js/jquery-1.12.3.min.js"></script>#}
     <script src="/static/js/jquery.idcode.js"></script>
     <script src="/static/js/jquery.cookie.js"></script>
 
@@ -43,17 +43,23 @@
 {#    <script type="text/javascript" src="/static/js/mid.js"></script>#}
      <script src="/static/js/swiper.js"></script>
     <script src="/static/js/wheel.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
 
-    {% if isture %}
+    <script src="/static/js/register.js"></script>
+
+    {% if isture == '1' %}
         <script>
             $(function () {
                 $(".loading").css({"display": "block"})
+                console.log(typeof ({{ isture }}))
             })
         </script>
     {% endif %}
 </head>
 
 <body>
+
+
 <!--头部开始 -->
 <div id="head">
     <div class="header">
@@ -61,7 +67,7 @@
         <div class="h_left">
             <ul>
                 <li>
-                    <a href="index.html"><img src="/static/headimg/logo.jpg" style="width: 90px;height: 50px;"/></a>
+                    <a href="{% url 'app:index' 0 %}"><img src="/static/headimg/logo.jpg" style="width: 90px;height: 50px;"/></a>
                 </li>
                 <li><a href="#">每日上新</a></li>
                 <li><a href="#">TOP50</a></li>
@@ -117,15 +123,15 @@
 
         <div class="load_user">
             <h4>通过趣玩帐号登录</h4>
-            <form action={% url 'app:login' %}   method="post">
+            <form  action={% url 'app:login' %} method="post">
                 {% csrf_token %}
 
-                帐号&nbsp;<input type="text" class="load_user_text" name="count"/>
+                帐号&nbsp;<input type="text" class="load_user_text" name="email"/>
                 密码&nbsp;<input type="password" class="load_user_paw" name="password"/>
 
                 <input type="submit" value="登录"/>
                 {# 密码或用户名错误判断是否冒红#}
-                {% if isture %}<p style="color: red">密码或用户名错误</p>{% endif %}
+                {% if isture == '1'%}<p style="color: red">密码或用户名错误</p>{% endif %}
 
 
 
@@ -156,12 +162,22 @@
             <h4>注册趣玩帐号</h4>
             <form action={% url 'app:regist' %}  method="post">
                 {% csrf_token %}
-                帐号&nbsp;<input type="text" placeholder="用户名长度在6-10之间，只能是字母、数字、下划线" class="add_user_text" name="count"/>
-                昵称&nbsp;<input type="text" class="add_user_use" name="username"/>
+{#                帐号&nbsp;#}
+                <input type="text" placeholder="邮箱" class="add_user_text" name="email"/>
+                      <span id ='help1'></span>
+{#                昵称#}
+                <input type="text" class="add_user_use" name="username" placeholder="名字"/>
+                <span id ='help2'>长度为3~10</span>
 
-                密码&nbsp;<input type="password" class="add_user_paw" name="password"/>
-                验证码&nbsp;<input type="text" id="Txtidcode" class="txtVerification"><span id="idcode"></span>
-                <input type="submit" value="注册" class="add_new"/>
+{#                密码&nbsp;#}
+                <input type="password" class="add_user_paw" name="password" placeholder="密码"/>
+                <span id ='help3'>长度为6~12，且只能为数字、字母、下划线</span>
+
+{#                验证码&nbsp;#}
+{#                <input type="text" id="Txtidcode" class="txtVerification" placeholder="验证码"><span id="idcode"></span>#}
+
+                    <input type="submit" value="注册" class="add_new" disabled="disabled"/>
+
             </form>
         </div>
 
@@ -277,7 +293,7 @@
 <!--	mid start-->
 <div class="midlle" style="width: 100%;height:3630px;background:#f3ebde;">
 
-    <div class="mid" style="width: 1263px;height: 3630px;margin: 0 auto;">
+    <div class="mid" style="width: 1293px;height: 3630px;margin: 0 auto;">
         <div class="mid_left">
             <div class="title">
                 <h3>欢迎来到趣玩</h3>
@@ -350,74 +366,20 @@
                     <p>￥ 1888.00</p>
                 </div>
             </div>
-
+{#                    展示首页左下角区域商品#}
             <div class="l_pic5">
+                {% for leftshop in leftshops %}
                 <div class="l_pic5_1">
                     <a href="#">
-                        <img src="/static/midpic/power.jpg"/>
+                        <img src={{ leftshop.path }} />
                     </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
+                    <h4>{{ leftshop.name }}</h4>
+                    <p>{{ leftshop.price }}</p>
                 </div>
-
-                <div class="l_pic5_2">
-                    <a href="#">
-                        <img src="/static/midpic/dianzi.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
-
-                <div class="l_pic5_1">
-                    <a href="#">
-                        <img src="/static/midpic/peper.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
-
-                <div class="l_pic5_2">
-                    <a href="#">
-                        <img src="/static/midpic/cap.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
-
-                <div class="l_pic5_1">
-                    <a href="#">
-                        <img src="/static/midpic/blue.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
-
-                <div class="l_pic5_2">
-                    <a href="#">
-                        <img src="/static/midpic/3d.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
-                <div class="l_pic5_1">
-                    <a href="#">
-                        <img src="/static/midpic/glass.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
-
-                <div class="l_pic5_2">
-                    <a href="#">
-                        <img src="/static/midpic/girl.jpg"/>
-                    </a>
-                    <h4>手工定制水仙椰子灯-NO.27</h4>
-                    <p>￥ 1888.00</p>
-                </div>
+                 {% endfor %}
             </div>
-
-
         </div>
+
 
 
         <!--mid right -->
@@ -437,7 +399,7 @@
 
                     {% for showshop in showshops %}
                      <div class="right_pic2_1">
-                        <a href="#">
+                        <a href={% url 'app:showgoods' 0  showshop.name %}>
                             <img src={{ showshop.path }}/>
                          </a>
                         <h4>{{ showshop.name }}</h4>
@@ -451,7 +413,7 @@
 {#                </div>#}
             </div>
 
-
+{#第五张图#}
             <div class="right_pic3">
                 <div class="right_pic3_1">
                     <img src="/static/midpic/zhongqiu.jpg"/>
@@ -690,6 +652,7 @@
 
         </div>
         <!--mid right 结束 -->
+
     </div>
 </div>
 <!--	mid 结束-->

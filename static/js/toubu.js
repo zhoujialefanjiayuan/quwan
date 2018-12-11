@@ -98,8 +98,8 @@ $(function() {
 		$(".add").css("display", "none")
 	})
 
-
-	$.idcode.setCode(); 
+    //
+	// $.idcode.setCode();
 //	var IsBy = $.idcode.validateCode()  //调用返回值，返回值结果为true或者false
 //	    if(IsBy){
 //	            console.log("验证码输入正确")

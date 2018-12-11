@@ -351,16 +351,18 @@ html {
 .load_user_text,
 .add_user_text,
 .add_user_use {
-	width: 250px;
+	width: 100%;
 	line-height: 30px;
-	margin-top: 20px;
+	margin-top: 10px;
+	border: black solid 2px;
 }
 
 .load_user_paw,
 .add_user_paw {
-	width: 250px;
+	width: 100%;
 	line-height: 30px;
-	margin-top: 20px;
+	margin-top: 10px;
+	border: black solid 2px;
 }
 
 .load_enter {
@@ -373,8 +375,10 @@ html {
 .add_new {
 	width: 100px;
 	height: 30px;
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-left: 20px;
+	color: white;
+	background: black;
 }
 
 .add_new,
@@ -397,5 +401,17 @@ html {
 #Txtidcode {
 	width: 100px;
 	line-height: 20px;
-	margin-top: 20px;
+	margin-top: 10px;
+	border: black solid 2px;}
+
+.add_user	span
+{
+	font-size: 10px;
+	height: 12px;
+	margin: 0;
+	padding: 0;
 }
+
+.green{color: green}
+.red{color:red}
+

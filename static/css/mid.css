@@ -43,13 +43,13 @@
 .l_pic4_right{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
 .l_pic4_right img{width: 234px;height: 194px;}
 
-.l_pic5{width: 478px;height: 1022px;}
+.l_pic5{width: 488px;height: 1022px;}
 .l_pic5 div{margin-top: 10px;}
-.l_pic5_2 {margin-left: 10px;}
-.l_pic5_1{width: 234px;height: 234px;float: left;font-size: 12px;background: white;}
+/*.l_pic5_2 {margin-left: 10px;}*/
+.l_pic5_1{width: 234px;height: 234px;float: left;font-size: 12px;background: white;margin-right: 10px;}
 .l_pic5_1 img{width: 234px;height: 194px;}
 
-.l_pic5_2{width: 234px;height: 234px;float: left;font-size: 12px;margin-left: 10px;background: white;}
+.l_pic5_2{width: 234px;height: 234px;float: left;font-size: 12px;background: white;margin-right: 10px;}
 .l_pic5_2 img{width: 234px;height: 194px;}
 
 /*right*/

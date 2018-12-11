@@ -64,28 +64,38 @@ $(function() {
 
 	var id = location.search.substring(1);
 
-	$.getJSON("json/mid.json", function(data) {
+	 $.getJSON("/static/json/mid.json", function(data) {
 
-		for(var i = 0; i < data.length; i++) {
-			if(data[i].id == id) {
-				$(".show_list_ul li").eq(0).children("img").attr("src", data[i].bg);
-				$(".show_list_ul li").eq(1).children("img").attr("src", data[i].bg1);
-				$("#smallImg").css("background", "url(" + data[i].src);
-				$("#bigImg").attr("src", data[i].src)
-				$(".shop_single").html(data[i].single)
-				$(".shop_price").html(data[i].price)
-				$(".shop_explain").html(data[i].explain)
-				
+	for(var i = 0; i < data.length; i++) {
+		if(data[i].id == id) {
+		$(".show_list_ul li").eq(0).children("img").attr("src", data[i].bg);
+			$(".show_list_ul li").eq(1).children("img").attr("src", data[i].bg1);
 
-			}
+			$("#smallImg").css("background", "url(" + data[i].src);
+
+			$("#bigImg").attr("src", data[i].src)
+			$(".shop_single").html(data[i].single)
+			$(".shop_price").html(data[i].price)
+ 			$(".shop_explain").html(data[i].explain)
+
+
 		}
-	})
+		}
+	 })
 
-	$(".show_list li").mouseenter(function() {
-			index = $(this).index() + 1;
-			$(this).css("border", "1px solid red").siblings().css("border", "none");
-			$("#smallImg").css("background", "url(midpic/" + index + ".jpg");
-			$("#bigImg").attr("src", "midpic/" + index + ".jpg")
+
+	$(".show_list li img").mouseenter(function() {
+			// index = $(this).index() + 1;
+			// $(this).css("border", "1px solid red").siblings().css("border", "none");
+			// $("#smallImg").css("background", "url(midpic/" + index + ".jpg)");
+			// $("#bigImg").attr("src", "midpic/" + index + ".jpg")
+            srcneed = $(this).attr("src")
+		    console.log(srcneed)
+			$(this).parent().css("border", "1px solid red").siblings().css("border", "none");
+			$("#smallImg").css("background","url(" + srcneed +')');
+			$("#bigImg").attr("src", srcneed)
+		    $("#bigImg").show()
+
 		})
 		//放大镜end
 
