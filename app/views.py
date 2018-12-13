@@ -117,4 +117,101 @@ def checkemial(request):
 
 
 def cart(request):
-    return render(request,'money.html')
+    token = request.session.get('token')
+    if token:
+        get_user = Users.objects.get(token=token)
+        carts = Cart.objects.filter(user=get_user)
+        data = {'get_user': get_user,
+                'carts':carts
+                }
+        return render(request,'money.html',context=data)
+    else:
+        return redirect('app:index',1)
+
+
+def addcart(request):
+    instr = request.GET.get('instr')
+    token = request.session.get('token')
+    if token:
+        good= Goods.objects.get(instr=instr)
+        user = Users.objects.get(token=token)
+        carts = Cart.objects.filter(good=good).filter(user=user)
+        if carts.count():
+            cart = carts.first()
+            cart.number +=1
+            cart.save()
+            return JsonResponse({'数量':cart.number})
+        else:
+            cart = Cart()
+            cart.user = user
+            cart.good = good
+            cart.number = 1
+            cart.save()
+            return JsonResponse({'数量': cart.number})
+
+
+def changeisselect(request):
+    cartid = request.GET.get('cartid')
+    cart = Cart.objects.get(pk=cartid)
+    cart.isselect = not cart.isselect
+    cart.save()
+    return JsonResponse({'isselect':cart.isselect})
+
+
+def selectall(request):
+    isall = request.GET.get('isall')
+    token = request.session.get('token')
+    user = Users.objects.get(token=token)
+    carts = Cart.objects.filter(user=user)
+    if isall == 'false':
+        for cart in carts:
+            cart.isselect = 1
+            cart.save()
+    else:
+        for cart in carts:
+            cart.isselect = 0
+            cart.save()
+    cart = carts.first()
+    selectall = str(cart.isselect)
+    print(selectall)
+    return JsonResponse({'selectall':selectall})
+
+
+def dowmnum(request):
+    cartid = request.GET.get('cartid')
+    print(cartid)
+    cart = Cart.objects.get(pk=cartid)
+    num = cart.number
+    if num > 1:
+        cart.number -= 1
+        cart.save()
+    else:
+        cart.number = 0
+        cart.save()
+
+    print(cart.number)
+
+    return JsonResponse({'num':cart.number})
+
+
+def addnum(request):
+    cartid = request.GET.get('cartid')
+    print(cartid)
+    cart = Cart.objects.get(pk=cartid)
+    cart.number +=1
+    cart.save()
+
+    print(cart.number)
+
+    return JsonResponse({'num': cart.number})
+
+
+def sumprice(request):
+    token = request.session.get('token')
+    user = Users.objects.get(token=token)
+    carts = Cart.objects.filter(isselect=True).filter(user=user)
+    sumprice = 0
+    for cart in carts:
+        total= cart.number * cart.good.price
+        sumprice += total
+    return JsonResponse({'sum':sumprice})

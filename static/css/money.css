@@ -46,47 +46,47 @@ html {
 	color: red;
 }
 
-._commodity {
-	width: 450px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-}
+/*._commodity {*/
+	/*width: 450px;*/
+	/*height: 50px;*/
+	/*line-height: 50px;*/
+	/*text-align: center;*/
+/*}*/
 
-._price ,._total,._dele{
-	width: 140px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-}
-._commodity,._price ,._total,._dele{
-	float: left;
-	background: lightgray;
-	cursor: pointer;
-	margin-top: 20px;
-}
-
-
+/*._price ,._total,._dele{*/
+	/*width: 140px;*/
+	/*height: 50px;*/
+	/*line-height: 50px;*/
+	/*text-align: center;*/
+/*}*/
+/*._commodity,._price ,._total,._dele{*/
+	/*float: left;*/
+	/*background: lightgray;*/
+	/*cursor: pointer;*/
+	/*margin-top: 20px;*/
+/*}*/
 
 
-.commodity {
-	width: 450px;
-	height:450px;
-	line-height: 50px;
-	text-align: center;
-}
 
-.price ,.total,.dele{
-	width: 140px;
-	height: 450px;
-	line-height: 50px;
-	text-align: center;
-}
-.commodity,.price ,.total,.dele{
-	float: left;
-	background: white;
-	cursor: pointer;
-	border-bottom: 1px solid darkgray;
-}
+
+/*.commodity {*/
+	/*width: 450px;*/
+	/*height:450px;*/
+	/*line-height: 50px;*/
+	/*text-align: center;*/
+/*}*/
+
+/*.price ,.total,.dele{*/
+	/*width: 140px;*/
+	/*height: 450px;*/
+	/*line-height: 50px;*/
+	/*text-align: center;*/
+/*}*/
+/*.commodity,.price ,.total,.dele{*/
+	/*float: left;*/
+	/*background: white;*/
+	/*cursor: pointer;*/
+	/*border-bottom: 1px solid darkgray;*/
+/*}*/
 
 

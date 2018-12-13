@@ -100,88 +100,100 @@ $(function() {
 		//放大镜end
 
 	//购物车start
+	text = $('.load').html()
+	console.log(text)
+	if(text=='登录'){$(".shop_shoping").click(function () {
+		$(".loading").css({"display": "block"})
+    })
+	 	}
+	else {
+        $(".shop_shoping").click(function ( e) {
 
-	$(".shop_shoping").click(function(e) {
+            //		var arr = [];
+            //				//obj1
+            //				var obj1 = {};
+            //				obj1.name = $(".shop_name").html();
+            //				obj1.explain = $(".shop_explain").html();
+            //				obj1.price = $(".shop_price").html();
+            //				obj1.num = 1;
+            //				arr.push(obj1);
+            //
+            //				//$.cookie("obj", JSON.stringify(arr), {expires:7, path:"/"});
+            //				$.cookie("obj",JSON.stringify(arr),{expires:10,path:"/"})
+            //				console.log( $.cookie("obj") );
 
-		//		var arr = [];
-		//				//obj1
-		//				var obj1 = {};
-		//				obj1.name = $(".shop_name").html();
-		//				obj1.explain = $(".shop_explain").html();
-		//				obj1.price = $(".shop_price").html();
-		//				obj1.num = 1;
-		//				arr.push(obj1);
-		//				
-		//				//$.cookie("obj", JSON.stringify(arr), {expires:7, path:"/"});
-		//				$.cookie("obj",JSON.stringify(arr),{expires:10,path:"/"})
-		//				console.log( $.cookie("obj") );
+            var goodsList = $.cookie("obj") ? JSON.parse($.cookie("obj")) : [];
+            var goodsName = $(".shop_explain").html();
+            var isExists = false; //表示是否存在相同商品
 
-		var goodsList = $.cookie("obj") ? JSON.parse($.cookie("obj")) : [];
-		var goodsName =$(".shop_explain").html();
-		var isExists = false; //表示是否存在相同商品
+            for (var i = 0; i < goodsList.length; i++) {
+                //如果存在相同的商品, 则把数量++, 不需要重新添加新的商品
+                if (goodsName == goodsList[i].explain) {
+                    goodsList[i].num++;
+                    isExists = true; //表示存在相同商品
+                }
+            }
 
-		for(var i = 0; i < goodsList.length; i++) {
-			//如果存在相同的商品, 则把数量++, 不需要重新添加新的商品
-			if(goodsName == goodsList[i].explain) {
-				goodsList[i].num++;
-				isExists = true; //表示存在相同商品
-			}
-		}
-		
-		//如果不存在相同商品, 则添加新商品
-		if(!isExists) {
-			//添加一个新商品到购物车
-			var goods = {
+            //如果不存在相同商品, 则添加新商品
+            if (!isExists) {
+                //添加一个新商品到购物车
+                var goods = {
 
-				single: $(".shop_single").html(),
-				price: $(".shop_price").html(),
-				explain: $(".shop_explain").html(),
-				
-				num: 1
-			}
-			goodsList.push(goods);
-		}
+                    single: $(".shop_single").html(),
+                    price: $(".shop_price").html(),
+                    explain: $(".shop_explain").html(),
 
-		$.cookie("obj", JSON.stringify(goodsList), {
-			expires: 22,
-			path: "/"
-		});
-		console.log($.cookie("obj"));
+                    num: 1
+                }
+                goodsList.push(goods);
+            }
 
-		var x = e.pageX;
-		var y = e.pageY;
-		var moveImg = new Move(x, y);
-		moveImg.fly()
+            $.cookie("obj", JSON.stringify(goodsList), {
+                expires: 22,
+                path: "/"
+            });
+            console.log($.cookie("obj"));
 
-	})
+            var x = e.pageX;
+            var y = e.pageY;
+            var moveImg = new Move(x, y);
+            moveImg.fly()
+			//点击传参到服务器，存储cart数据
+			var  instr = $(this).attr('id')
+			$.get('/addcart/',{'instr':instr},function (re) {
+				console.log(re)
+            })
 
-	function Move(x, y) {
-		//节点属性
-		this.ele = $("<img class='moveImg'>");
-		this.ele.attr("src", "midpic/1.jpg"); //图片
-		this.ele.css({
-			"left": x,
-			"top": y
-		}); 
-		$("body").append(this.ele);
+        })
+        //end
+        function Move(x, y) {
+            //节点属性
+            this.ele = $("<img class='moveImg'>");
+            this.ele.attr("src", "/static/midpic/1.jpg"); //图片
+            this.ele.css({
+                "left": x,
+                "top": y
+            });
+            $("body").append(this.ele);
 
-		//飞的方法
-		this.fly = function() {
-			var self = this;
-			//飞
-			this.ele.animate({
-				left: 1230,
-				top: 30,
-				width: 10,
-				height: 10
-			}, 1000, function() {
+            //飞的方法
+            this.fly = function () {
+                var self = this;
+                //飞
+                this.ele.animate({
+                    left: 1230,
+                    top: 30,
+                    width: 10,
+                    height: 10
+                }, 1000, function () {
 
-				$(".moveImg").remove()
-				console.log("完成")
-			});
-		}
+                    $(".moveImg").remove()
+                    console.log("完成")
+                });
+            }
 
-	}
+        }
+    }
 
 	//购物车end
 

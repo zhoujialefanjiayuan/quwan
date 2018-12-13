@@ -29,3 +29,13 @@ class Goods(models.Model):
     price = models.DecimalField(max_digits=5,decimal_places=2)
     store = models.IntegerField(max_length=100)
     instr = models.CharField(max_length=100)
+
+class Cart(models.Model):
+    # 用户
+    user = models.ForeignKey(Users)
+    # 商品
+    good = models.ForeignKey(Goods)
+    # 商品个数
+    number = models.IntegerField()
+    # 是否选中
+    isselect = models.BooleanField(default=True)

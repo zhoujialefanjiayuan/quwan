@@ -99,8 +99,8 @@
             {% endif %}
 
 
-
-            <div class="shoping"><a href="/templates/money.html">购物车</a></div>
+            <div class="shoping"><a href='{% url 'app:cart' %}'>购物车</a></div>
+{#            <div class="shoping"><a href="/templates/money.html">购物车</a></div>#}
 
         </div>
     </div>
@@ -131,7 +131,7 @@
 
                 <input type="submit" value="登录"/>
                 {# 密码或用户名错误判断是否冒红#}
-                {% if isture == '1'%}<p style="color: red">密码或用户名错误</p>{% endif %}
+                {% if isture == '1'%}<p style="color: red">1.密码或用户名错误<br>2.或者请登录后再操作</p>{% endif %}
 
 
 
