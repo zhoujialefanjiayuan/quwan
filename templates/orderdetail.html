@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <link href="/static/css/orderdetail.css" rel="stylesheet" type="text/css"/>
+
+    <script src="/static/js/jquery-1.12.3.js"></script>
+    <script>
+        $(function () {
+
+            var money = 0
+        $('.price b').each(function () {
+            var p = parseInt($(this).html())
+            var n = parseInt($(this).attr('num'))
+             money = p*n + money
+        })
+           $(".bill-right b").html(money)
+        })
+    </script>
+</head>
+<body>
+<div class="orderdetail">
+    <div class="back">
+        <a href="{% url 'app:cart' %}">
+            <span class="glyphicon glyphicon-remove">返回购物车</span>
+        </a>
+    </div>
+
+    <p class="identifier">
+        订单号: {{ order.identifier }}
+    </p>
+
+    <ul>
+        {% for ordergoods in order.ordergoods_set.all %}
+            <li>
+                <div class="content-wrapper">
+                    <div class="img">
+                        <img src="{{ ordergoods.goods.path }}" style="width:100px;height: 100px" alt="">
+                    </div>
+                    <div class="detail">
+                        <p class="name">{{ ordergoods.goods.name }}</p>
+                        <p class="price" >￥<b num ='{{ ordergoods.number }}'>{{ ordergoods.goods.price }}</b></p>
+                        <p class="num" >x<b>{{ ordergoods.number }}</b></p>
+                        <p class="money"></p>
+
+
+                    </div>
+                </div>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <div class="bill">
+        {% if order.status == 0 %}
+            <div class="bill-right"   identifier="{{ order.identifier }}">付款<b style="margin:0 10px"></b></div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

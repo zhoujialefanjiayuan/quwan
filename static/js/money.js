@@ -109,11 +109,22 @@ $(function() {
     function total() {
          $.get('/sumprice/',function (re) {
         $('.total b').html(re.sum)
-    })
+        })
     }
 
+    // $('#generateorder').click(function () {
+    //   var $this=$(this)
+    //     var paymoney = $('.total b').html()
+    //     $.get('/sureorder/',{'paymoney':paymoney},function (re) {
+    //         window.open()
+    //     })
+    // //
+    // })
 
-
-
-
+        $.get('/orderstatu/',function (re) {
+            $('#waitpay').html(re.waitpay)
+            $('#payed').html(re.payed)
+            $('#waitget').html(re.waitget)
+            console.log(re)
+        })
 })

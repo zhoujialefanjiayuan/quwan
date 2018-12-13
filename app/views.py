@@ -215,3 +215,74 @@ def sumprice(request):
         total= cart.number * cart.good.price
         sumprice += total
     return JsonResponse({'sum':sumprice})
+
+
+
+
+def sureorder(request):
+    token = request.session.get('token')
+    user = Users.objects.get(token=token)
+    carts = Cart.objects.filter(user=user).filter(isselect=True)
+    if carts.count():
+
+        numstr = str(int(time.time()))+user.email
+        order = Order()
+        order.user = user
+        order.identifier = numstr
+        order.save()
+
+        for cart in carts:
+            ordergoods = OrderGoods()
+            ordergoods.order = order
+            ordergoods.goods = cart.good
+            ordergoods.number = cart.number
+            ordergoods.save()
+            cart.delete()
+        data = {
+            'order':order,
+        }
+
+        return render(request,'orderdetail.html',context=data)
+    else:
+        return redirect('app:index',0)
+
+
+def orderstatu(request):
+    token = request.session.get('token')
+    user = Users.objects.get(token=token)
+    orders = Order.objects.filter(user=user)
+    # 0 未付款
+    # 1 已付款
+    # 2 待收货
+    waitpay = 0
+    payed = 0
+    waitget = 0
+    for order in orders:
+        statu = order.status
+        if  statu == 0:
+            waitpay +=1
+        elif statu == 1:
+            payed += 1
+        else:
+            waitget += 1
+    return JsonResponse({'waitpay':waitpay,'payed':payed,'waitget':waitget})
+
+
+def notpayorder(request):
+    token = request.session.get('token')
+    user = Users.objects.get(token=token)
+    order = Order.objects.filter(user=user)
+    data = {
+            'orders': order,
+        }
+
+    return render(request, 'notpayorder.html', context=data)
+
+
+def showorder(request):
+    id = request.GET.get('id')
+    order = Order.objects.get(pk=id)
+    data = {
+        'order': order,
+    }
+    return render(request, 'orderdetail.html', context=data)

@@ -18,6 +18,11 @@ urlpatterns=[
     url(r"^selectall/$",views.selectall),
     url(r'^dowmnum/$',views.dowmnum),
     url(r'^addnum/$',views.addnum),
-    url(r'^sumprice/$',views.sumprice)
+    url(r'^sumprice/$',views.sumprice),
+    #订单详情展示，确认支付页面
+    url(r'^sureorder/$',views.sureorder,name='sureorder'),
+    url(r'^orderstatu/$',views.orderstatu,name='orderstatu'),
+    url(r'^notpayorder/$',views.notpayorder,name='notpayorder'),
+    url(r'^showorder/$',views.showorder,name='showorder')
 
 ]

@@ -45,7 +45,8 @@
         <div class="h_left">
             <ul>
                 <li>
-                    <a href="{% url 'app:index' 0 %}"><img src="/static/headimg/logo.jpg" style="width: 90px;height: 50px;"/></a>
+                    <a href="{% url 'app:index' 0 %}"><img src="/static/headimg/logo.jpg"
+                                                           style="width: 90px;height: 50px;"/></a>
                 </li>
                 <li>
                     <a href="#">每日上新</a>
@@ -257,9 +258,9 @@
                         <li class="goods">
                             <div class="confirm-wrapper" cartid="{{ cart.id }}">
                                 {% if cart.isselect %}
-                                    <span class="glyphicon glyphicon-ok" ></span>
+                                    <span class="glyphicon glyphicon-ok"></span>
                                 {% else %}
-                                    <span class="no" ></span>
+                                    <span class="no"></span>
                                 {% endif %}
                             </div>
                             <div class="content-wrapper">
@@ -269,12 +270,14 @@
                                 <div class="detail">
                                     <p class="name">{{ cart.good.instr }}</p>
                                     <p class="price" price="{{ cart.good.price }}"> ￥ {{ cart.good.price }}</p>
-                                    <div class="num" num="{{ cart.number }}"  cartid = "{{ cart.id }}">
+                                    <div class="num" num="{{ cart.number }}" cartid="{{ cart.id }}">
                                         {% if cart.number %}
-                                        <p id ='dowmnum'  class="glyphicon glyphicon-minus" style="font-size: 15px ;margin :10px;color: black" ></p>
+                                            <p id='dowmnum' class="glyphicon glyphicon-minus"
+                                               style="font-size: 15px ;margin :10px;color: black"></p>
                                         {% endif %}
                                         <b>{{ cart.number }}</b>
-                                        <p class="glyphicon glyphicon-plus" style="font-size: 15px ;margin :10px;color: black"></p>
+                                        <p class="glyphicon glyphicon-plus"
+                                           style="font-size: 15px ;margin :10px;color: black"></p>
                                     </div>
 
                                 </div>
@@ -294,8 +297,9 @@
                             <b>200</b>
                         </div>
                     </div>
+
                     <div class="bill-right" id="generateorder">
-                        下单
+                        <a href={% url 'app:sureorder' %}>下单 </a>
                     </div>
 
 
@@ -334,6 +338,22 @@
             {#            <div class="dele">#}
             {##}
             {#            </div>#}
+            {#我的订单部分#}
+            <div class="mineorder" style="top: 30px;left: 780px">
+                <p style="color: black;font-size: 20px;text-align: center">我的订单</p>
+                <a href="/notpayorder/">
+                    <div >
+                        未付款<span class="badge" id='waitpay'  style="margin: 2px;background: #2e6da4"></span>
+                    </div>
+                </a>
+                <div>
+                    已付款<span class="badge" id='payed'    style="margin: 2px;background: #2e6da4"></span>
+                </div>
+                <div>待收货
+                    <span class="badge"  id ='waitget'  style="margin: 2px;background: #2e6da4"></span>
+                </div>
+
+            </div>
 
 
         </div>

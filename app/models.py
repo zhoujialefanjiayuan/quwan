@@ -39,3 +39,26 @@ class Cart(models.Model):
     number = models.IntegerField()
     # 是否选中
     isselect = models.BooleanField(default=True)
+
+class Order(models.Model):
+    user = models.ForeignKey(Users)
+    # 创建时间
+    createtime = models.DateTimeField(auto_now_add=True)
+    # 状态
+    # 0 未付款
+    # 1 已付款
+    # 2 待收货
+    status = models.IntegerField(default=0)
+    # 订单号
+    identifier = models.CharField(max_length=256)
+    payed = models.IntegerField(default=0) #已支付金额
+
+class OrderGoods(models.Model):
+    # 订单
+    order = models.ForeignKey(Order)
+    # 商品
+    goods = models.ForeignKey(Goods)
+    # 个数
+    number = models.IntegerField()  # 1
+
+
