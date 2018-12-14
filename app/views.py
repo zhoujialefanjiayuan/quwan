@@ -286,3 +286,12 @@ def showorder(request):
         'order': order,
     }
     return render(request, 'orderdetail.html', context=data)
+
+
+def notify(request):
+
+    return JsonResponse({'msg':'sucess'})
+
+
+def result(request):
+    return JsonResponse({'msg':'waiting'})

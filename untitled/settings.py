@@ -81,7 +81,6 @@ DATABASES = {
         'NAME':'zhou_quwan',
         'USER':'root',
         'PASSWORD':'123',
-        'HOST':'47.107.141.202'
     }
 }
 

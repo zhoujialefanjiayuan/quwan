@@ -23,6 +23,8 @@ urlpatterns=[
     url(r'^sureorder/$',views.sureorder,name='sureorder'),
     url(r'^orderstatu/$',views.orderstatu,name='orderstatu'),
     url(r'^notpayorder/$',views.notpayorder,name='notpayorder'),
-    url(r'^showorder/$',views.showorder,name='showorder')
+    url(r'^showorder/$',views.showorder,name='showorder'),
+    url(r'^notify/$',views.notify,name='notify'),
+    url(r'^result/$',views.result,name ='result'),
 
 ]
